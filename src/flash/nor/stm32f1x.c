@@ -981,6 +981,11 @@ static int stm32x_probe(struct flash_bank *bank)
 		stm32x_info->default_rdp = 0xAA;
 		stm32x_info->can_load_options = true;
 		break;
+	case 0x242: /* AT32F403 */
+		page_size = 2048;
+		stm32x_info->ppage_size = 2;
+		max_flash_size_in_kb = 512;
+		break;
 	default:
 		LOG_WARNING("Cannot identify target as a STM32 family.");
 		return ERROR_FAIL;
